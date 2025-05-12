@@ -1,43 +1,160 @@
-.actividad-reciente h2 {
-  color: #2c3e50;
-  margin-bottom: 1.5rem;
-  border-bottom: 2px solid #3498db;
-  padding-bottom: 0.5rem;
+/* Variables de tema */
+:root {
+  --color-primary: #3498db;
+  --color-secondary: #2c3e50;
+  --color-bg-light: #f8f9fa;
+  --color-text: #444;
+  --shadow-light: rgba(0, 0, 0, 0.05);
+  --shadow-strong: rgba(0, 0, 0, 0.1);
+  --radius: 0.5rem;
+  --transition-fast: 0.2s ease-in-out;
 }
 
+/* Contenedor de actividad */
+.actividad-reciente {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--color-text);
+}
+
+/* Título */
+.actividad-reciente h2 {
+  color: var(--color-secondary);
+  margin: 0 0 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--color-primary);
+  font-size: 1.75rem;
+  transition: color var(--transition-fast);
+}
+
+.actividad-reciente h2:hover {
+  color: var(--color-primary);
+}
+
+/* Panel de filtros */
 .filtros-actividad {
-  background-color: #f8f9fa;
-  padding: 1rem;
-  border-radius: 5px;
+  background-color: var(--color-bg-light);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px var(--shadow-strong);
+  transition: box-shadow var(--transition-fast);
+}
+
+.filtros-actividad:hover {
+  box-shadow: 0 4px 8px var(--shadow-strong);
+}
+
+/* Tabla */
+.actividad-reciente .table-responsive {
+  overflow-x: auto;
   margin-bottom: 1.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .actividad-reciente table {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 2px 5px var(--shadow-strong);
+  transition: box-shadow var(--transition-fast);
+}
+
+.actividad-reciente table:hover {
+  box-shadow: 0 4px 10px var(--shadow-strong);
+}
+
+.actividad-reciente th,
+.actividad-reciente td {
+  padding: 0.75rem 1rem;
+  vertical-align: middle;
+  border-top: 1px solid #eee;
 }
 
 .actividad-reciente th {
-  background-color: #3498db;
-  color: white;
+  background-color: var(--color-primary);
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 0.95rem;
 }
 
+/* Filas alternas y hover */
 .actividad-reciente .table-striped tbody tr:nth-of-type(odd) {
-  background-color: rgba(0, 123, 255, 0.05);
+  background-color: rgba(52, 152, 219, 0.05);
 }
 
+.actividad-reciente tbody tr {
+  transition: background-color var(--transition-fast);
+}
+
+.actividad-reciente tbody tr:hover {
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+/* Badges */
 .actividad-reciente .badge {
-  padding: 8px;
-  font-size: 0.8rem;
+  display: inline-block;
+  padding: 0.4em 0.75em;
+  font-size: 0.75rem;
+  border-radius: var(--radius);
+  background-color: var(--color-primary);
+  color: #fff;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-/* Estilos responsivos */
+.actividad-reciente .badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px var(--shadow-strong);
+}
+
+/* Paginación custom */
+.actividad-reciente .pagination {
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.actividad-reciente .page-item .page-link {
+  border-radius: var(--radius);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.actividad-reciente .page-item.active .page-link {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+.actividad-reciente .page-link:hover {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+/* Responsividad */
+@media (max-width: 992px) {
+  .actividad-reciente h2 {
+    font-size: 1.5rem;
+  }
+  .filtros-actividad {
+    padding: 1rem;
+  }
+}
+
 @media (max-width: 768px) {
   .actividad-reciente .table-responsive {
     font-size: 0.9rem;
   }
-  
   .filtros-actividad .row {
     margin-bottom: 1rem;
+  }
+  .actividad-reciente th,
+  .actividad-reciente td {
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .actividad-reciente h2 {
+    font-size: 1.25rem;
+  }
+  .actividad-reciente .badge {
+    font-size: 0.7rem;
+    padding: 0.3em 0.6em;
   }
 }
