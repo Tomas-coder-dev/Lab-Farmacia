@@ -1,58 +1,136 @@
+/* Theme Variables */
+:root {
+  --color-primary:        #3498db;
+  --color-primary-dark:   #2980b9;
+  --color-text:           #2c3e50;
+  --color-bg:             #ffffff;
+  --color-border:         #3498db;
+  --color-disabled:       #7fb5d9;
+  --color-link:           #3498db;
+  --color-link-hover:     #2980b9;
+  --radius:               0.5rem;
+  --spacing:              1rem;
+  --transition-fast:      0.3s ease;
+  --shadow-light:         rgba(0, 0, 0, 0.1);
+  --shadow-strong:        rgba(0, 0, 0, 0.2);
+  --max-width-form:       400px;
+}
+
+/* Container centering */
 .registro-container {
-  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  padding: calc(var(--spacing) * 2) var(--spacing);
 }
 
+/* Card */
 .registro-card {
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 30px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-bg);
+  border-radius: var(--radius);
+  padding: calc(var(--spacing) * 2);
+  box-shadow: 0 4px 6px var(--shadow-light);
+  max-width: var(--max-width-form);
+  width: 100%;
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
 }
 
-.registro-card h2 {
-  color: #2c3e50;
-  margin-bottom: 1.5rem;
-  border-bottom: 2px solid #3498db;
-  padding-bottom: 0.5rem;
-}
-
-.form-label {
-  font-weight: 500;
-}
-
-.btn-primary {
-  background-color: #3498db;
-  border-color: #3498db;
-  padding: 10px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.btn-primary:hover, .btn-primary:focus {
-  background-color: #2980b9;
-  border-color: #2980b9;
+.registro-card:hover {
+  box-shadow: 0 6px 12px var(--shadow-strong);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Heading */
+.registro-card h2 {
+  color: var(--color-text);
+  margin-bottom: calc(var(--spacing) * 1.5);
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--color-primary);
+  font-size: 1.75rem;
+  transition: color var(--transition-fast);
+}
+
+.registro-card h2:hover {
+  color: var(--color-primary);
+}
+
+/* Form Labels */
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+/* Inputs & Selects */
+.registro-card input[type="text"],
+.registro-card input[type="email"],
+.registro-card input[type="password"],
+.registro-card select {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: var(--spacing);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.registro-card input:focus,
+.registro-card select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+/* Primary Button */
+.btn-primary {
+  display: inline-block;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-border);
+  color: var(--color-bg);
+  font-weight: 500;
+  border-radius: var(--radius);
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.btn-primary:hover:not(:disabled),
+.btn-primary:focus:not(:disabled) {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--shadow-strong);
 }
 
 .btn-primary:disabled {
-  background-color: #7fb5d9;
-  border-color: #7fb5d9;
+  background-color: var(--color-disabled);
+  border-color: var(--color-disabled);
+  cursor: not-allowed;
+  opacity: 0.8;
 }
 
-a {
-  color: #3498db;
+/* Links */
+.registro-card a {
+  color: var(--color-link);
   text-decoration: none;
+  transition: color var(--transition-fast);
 }
 
-a:hover {
-  color: #2980b9;
+.registro-card a:hover {
+  color: var(--color-link-hover);
   text-decoration: underline;
 }
 
-/* Estilos responsivos */
-@media (max-width: 768px) {
+/* Responsive */
+@media (max-width: 480px) {
   .registro-card {
-    padding: 20px;
+    padding: calc(var(--spacing) * 1.5);
+  }
+  .registro-card h2 {
+    font-size: 1.5rem;
   }
 }
