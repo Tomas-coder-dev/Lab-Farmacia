@@ -1,50 +1,119 @@
+/* Theme Variables */
+:root {
+  --color-primary:       #4285f4;
+  --color-primary-dark:  #3367d6;
+  --color-light:         #fff;
+  --color-hover-bg:      rgba(255, 255, 255, 0.1);
+  --color-active-bg:     rgba(255, 255, 255, 0.2);
+  --shadow:              rgba(0, 0, 0, 0.1);
+  --radius:              0.5rem;
+  --spacing:             1rem;
+  --transition-fast:     0.3s ease;
+  --font-size-logo:      1.5rem;
+  --font-weight-bold:    700;
+}
+
+/* Navbar Container */
 .barra-navegacion {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #4285f4;
-  padding: 10px 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-primary);
+  padding: 0.75rem 1.5rem;
+  box-shadow: 0 2px 4px var(--shadow);
+  position: relative;
+  z-index: 1000;
 }
 
+/* Logo */
 .logo a {
-  color: white;
-  font-size: 1.5rem;
-  font-weight: bold;
+  color: var(--color-light);
+  font-size: var(--font-size-logo);
+  font-weight: var(--font-weight-bold);
   text-decoration: none;
+  transition: opacity var(--transition-fast);
 }
 
+.logo a:hover {
+  opacity: 0.8;
+}
+
+/* Links Wrapper */
 .enlaces {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: var(--spacing);
 }
 
+/* Individual Link */
 .enlace {
-  color: white;
+  color: var(--color-light);
   text-decoration: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
 }
 
 .enlace:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--color-hover-bg);
+  transform: translateY(-2px);
 }
 
+/* Active Link */
 .enlace.activo {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: var(--color-active-bg);
   font-weight: 500;
 }
 
+/* User Info */
 .usuario-info {
   display: flex;
   align-items: center;
-  gap: 15px;
-  color: white;
-  margin-left: 20px;
+  gap: 1rem;
+  color: var(--color-light);
 }
 
 .usuario-info span {
   font-weight: 500;
+}
+
+/* Responsive Toggle (for mobile) */
+.barra-navegacion .toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-light);
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .barra-navegacion {
+    flex-wrap: wrap;
+    padding: 0.5rem 1rem;
+  }
+
+  .toggle {
+    display: block;
+  }
+
+  .enlaces {
+    flex-direction: column;
+    width: 100%;
+    display: none;
+    margin-top: 0.5rem;
+    background-color: var(--color-primary);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .enlaces.active {
+    display: flex;
+  }
+
+  .enlace {
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem 0;
+  }
 }
